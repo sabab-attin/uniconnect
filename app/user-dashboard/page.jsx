@@ -9,7 +9,7 @@ import { redirect } from "next/navigation"
 import React, { useEffect, useState } from "react"
 
 const UserDashboard = () => {
-  const { userProfile, courses } = useAuth() //getti gng courses from context
+  const { userProfile, courses } = useAuth()
   // const [courses, setCourses] = useState()
 
   const [mount, setMount] = useState(false)
@@ -25,34 +25,16 @@ const UserDashboard = () => {
   return (
     <div className="w-full h-full p-5 flex flex-col justify gap-5">
       <ProfileHeader userProfile={userProfile} />
-      <div className="flex gap-3 flex-wrap">
-        <Button
-          variant="destructive"
-          size="sm"
-          onClick={() => redirect("/course/chat")}
-        >
-          Go to Chat
-        </Button>
-        <Button
-          size="sm"
-          onClick={() => redirect("/research")}
-          className="bg-purple-600 hover:bg-purple-700"
-        >
-          Research Opportunities & Groups
-        </Button>
-        {userProfile?.isFinalYear && (
-          <Button
-            size="sm"
-            onClick={() => redirect("/research")}
-            className="bg-blue-600 hover:bg-blue-700"
-          >
-            View Thesis & Internship Opportunities
-          </Button>
-        )}
-      </div>
+      <Button
+        variant="destructive"
+        size="sm"
+        onClick={() => redirect("/course/chat")}
+      >
+        Go to Chat
+      </Button>
       <CourseDisplay courses={courses} />
     </div>
   )
 }
 
-export default UserDashboard
+export default page
